@@ -1,0 +1,97 @@
+﻿.Opgave1 {
+    text-align: center;
+}
+
+.App-logo {
+    height: 20vmin;
+    pointer-events: none;
+}
+
+
+
+
+.Opgave1-header {
+    background-color: grey;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+button {
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    padding: 10px 60px;
+    border-radius: 5px;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 380px;
+    padding-right: 380px;
+}
+
+
+.Logout {
+    background-color: red;
+}
+
+.Title {
+    font-size: 50px;
+}
+
+label {
+    padding: 20px;
+    text-align: center;
+}
+
+.opgavedele {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+textarea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.billeder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.Kommentare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.opgave {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
