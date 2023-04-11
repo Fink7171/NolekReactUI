@@ -1,33 +1,53 @@
-﻿import React, { Component } from 'react';
+﻿import React, { useState } from 'react';
 import './Login.css';
 import nolek from './Nolek-logo.png';
 
 export class Login extends Component {
     static displayName = Login.name;
-
     render() {
         return (
-            <div className="Login">
-                <header className="Login-header">
-                    <img src={nolek} className="Login-logo" alt="logo" />
-                    <p>
-                        Service Helper
-                    </p>
-                    <textfield id="outlined-basic" label="Outlined" variant="outlined" />
-                    <form>
-                        <label>
-                            Navn:
-                            <input type="text" defaultValue="Asd123" name="name" />
-                        </label>
-                        <label>
-                            Kode:
-                            <input type="text" defaultValue="XXXXXXXXXX" name="password" />
-                        </label>
-                    </form>
-                    <button>Login</button>
-                </header>
 
-            </div>
-        );
-    }
+function LoginForm() {
+    <img src={nolek} className="Login-logo" alt="logo" />
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const response = await fetch('/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+        const data = await response.json();
+        if (response.ok) {
+            // Redirect user to dashboard or home page
+        } else {
+            // Handle error and display message to user
+        }
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Email:
+                <input
+                    type="email"
+                    value={email}
+                    onChange={(event) => setEmail(event.target.value)}
+                />
+            </label>
+            <label>
+                Password:
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(event) => setPassword(event.target.value)}
+                />
+            </label>
+            <button type="submit">Login</button>
+        </form>
+    );
 }
+
+export default LoginForm;
