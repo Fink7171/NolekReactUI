@@ -3,6 +3,7 @@ import './Rapport.css';
 import Luftfilter from './Luftfilter.jpg';
 import Oliefilter from './Olie filter.jpg';
 import Plus from './plusicon.png';
+import { Link } from 'react-router-dom';
 
 export class Rapport extends Component {
     static displayName = Rapport.name;
@@ -60,8 +61,12 @@ export class Rapport extends Component {
                     </form>
                     <br />
                     <div className="button-container">
-                        <button className="Back">Tilbage</button>
-                        <button className="Send">Indsend</button>
+                        <Link to="/opgave1">
+                            <button className="Tilbage">Tilbage</button>
+                        </Link>
+                        <Link to="/menu">
+                            <button className="Send">Indsend</button>
+                        </Link>
                     </div>
                 </header>
             </div>

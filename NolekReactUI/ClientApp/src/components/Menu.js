@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import './Menu.css';
+import { Link } from 'react-router-dom';
 
 export class Menu extends Component {
     static displayName = Menu.name;
@@ -46,8 +47,12 @@ export class Menu extends Component {
                     </form>
                     <br />
                     <div className="button-container">
-                        <button className="Logout">Log ud</button>
-                        <button className="Continue">Videre</button>
+                        <Link to="/login">
+                            <button className="Logout">Log ud</button>
+                        </Link>
+                        <Link to="/opgave1">
+                            <button className="Continue">Videre</button>
+                        </Link>
                     </div>
                 </header>
             </div>

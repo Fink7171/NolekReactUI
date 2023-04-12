@@ -3,6 +3,7 @@ import './Opgave1.css';
 import Bog from './Bog.png';
 import Oliefilter from './Olie filter.jpg';
 import Plus from './plusicon.png';
+import { Link } from 'react-router-dom';
 
 export class Opgave1 extends Component {
     static displayName = Opgave1.name;
@@ -65,8 +66,12 @@ export class Opgave1 extends Component {
                     </form>
 
                     <div className="button-container">
-                        <button className="Logout">Log ud</button>
-                        <button className="Continue">Videre</button>
+                        <Link to="/menu">
+                            <button className="Back">Tilbage</button>
+                        </Link>
+                        <Link to="/rapport">
+                            <button className="Continue">Videre</button>
+                        </Link>
                     </div>
                 </header>
             </div>
