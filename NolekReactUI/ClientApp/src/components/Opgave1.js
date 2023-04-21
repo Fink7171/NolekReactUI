@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom';
 export class Opgave1 extends Component {
     static displayName = Opgave1.name;
 
-
     constructor(props) {
         super(props);
         this.state = {
-            data: {}
+            data: {},
+            files: []
         };
     }
 
     componentDidMount() {
-        fetch('https://www.shiggy.dk/api/CustomersMachinesParts')
+        fetch('https://www.shiggy.dk/api/Customers')
             .then(response => response.json())
             .then(data => {
-                const firstCustomer = data[0];
+                const firstCustomer = data[1];
                 const groupedData = {
                     [firstCustomer.partsMustChange]: {
                         machineName: firstCustomer.machineName,
@@ -29,13 +29,42 @@ export class Opgave1 extends Component {
             .catch(error => console.log(error));
     }
 
+    handleFileUpload = (event) => {
+        const files = Array.from(event.target.files);
+        this.setState({ files: files });
+    }
+
+    handleFileSend = () => {
+        const formData = new FormData();
+        this.state.files.forEach(file => {
+            formData.append('files[]', file);
+        });
+        fetch('https://www.shiggy.dk/api/Services', {
+            method: 'POST',
+            body: formData
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                // add a response from the server-side API endpoint that confirms the picture was received
+                if (data.status === 'success') {
+                    console.log('Picture sent successfully');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    
+
     render() {
         const { data } = this.state;
-
-        const handleFileUpload = (event) => {
-            const file = event.target.files[0];
-            // Do something with the file, e.g. upload it to a server
-        }
 
         return (
             <div className="Opgave1">
@@ -58,20 +87,20 @@ export class Opgave1 extends Component {
                     </label>
 
                     <div className="opgavedele">
-                            {Object.keys(data).map(partsMustChange => (
-                                <div key={partsMustChange}>
-                                    <p>Vigtige dele:</p>
-                                    <span>{partsMustChange} X {data[partsMustChange].amountPartMachine}</span>
-                                </div>
-                            ))}
+                        {Object.keys(data).map(partsMustChange => (
+                            <div key={partsMustChange}>
+                                <p>Vigtige dele:</p>
+                                <span>{partsMustChange} X {data[partsMustChange].amountPartMachine}</span>
+                            </div>
+                        ))}
                     </div>
-                 
 
                     <div className="billeder">
                         <label>
                             Billeder:
                         </label>
-                        <input type="file" accept="image/*" multiple onChange={handleFileUpload} />
+                        <input type="file" accept="image/*" multiple onChange={this.handleFileUpload} />
+                        <button onClick={this.handleFileSend}>Send billeder</button>
                     </div>
 
                     <div className="Kommentare">
