@@ -13,7 +13,7 @@ export class Menu extends Component {
     }
 
     componentDidMount() {
-        fetch('https://www.shiggy.dk/api/CustomersMachinesParts/Customers')
+        fetch('https://www.shiggy.dk/api/Customers')
             .then(response => response.json())
             .then(data => {
                 const firstCustomer = data[0];

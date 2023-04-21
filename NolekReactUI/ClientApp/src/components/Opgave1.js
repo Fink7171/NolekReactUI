@@ -14,7 +14,7 @@ export class Opgave1 extends Component {
     }
 
     componentDidMount() {
-        fetch('https://www.shiggy.dk/api/Customers')
+        fetch('https://www.shiggy.dk/api/Machines')
             .then(response => response.json())
             .then(data => {
                 const firstCustomer = data[1];
@@ -51,7 +51,7 @@ export class Opgave1 extends Component {
             })
             .then(data => {
                 console.log('Success:', data);
-                // add a response from the server-side API endpoint that confirms the picture was received
+                
                 if (data.status === 'success') {
                     console.log('Picture sent successfully');
                 }
