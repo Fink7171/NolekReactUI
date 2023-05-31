@@ -38,27 +38,23 @@ export class Menu extends Component {
                     <div className="Teknikernavn">
                         <p>Velkommen Anders Andersen!</p>
                     </div>
+                    <div className="Kunde">
+                        <p>Næste kunde:</p>
+                    </div>
                     <div className="userData">
                         {Object.keys(data).map(customerName => (
                             <div key={customerName}>
-                                <p>Kundenavn:</p>
+                          
                                 {customerName}<br />
                                 <br />
-                                <p>Tlf. nummer:</p>{data[customerName].phoneNumber}<br />
+                                {data[customerName].phoneNumber}<br />
                                 <br />
-                                <p>Kunde adresse:</p>{data[customerName].customerAddress} <br />
+                                {data[customerName].customerAddress} <br />
                                 <br />
                             </div>
                         ))}
                     </div>
-                    <div className="Opgave">
-                        <textarea
-                            name="opgaveBeskrivelse"
-                            defaultValue="(Opgave beskrivelse, som systemet henter fra API´en. TBD.)"
-                            rows={4}
-                            cols={60}
-                        />
-                    </div>
+                    
                     <div className="button-container">
                         <Link to="/login">
                             <button className="Logout">Log ud</button>

@@ -108,7 +108,6 @@ export class Opgave1 extends Component {
                             Kommentarer:
                             <textarea
                                 name="kommentare"
-                                defaultValue="Det brugte oliefilter havde mere slid end normalt...."
                                 rows={4}
                                 cols={40}
                             />
