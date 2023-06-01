@@ -12,6 +12,7 @@ export class Menu extends Component {
         };
     }
 
+    // Henter data fra API´en, og fremviser specifikt kun den første kunde og dens releterede info i API´en
     componentDidMount() {
         fetch('https://www.shiggy.dk/api/Customers')
             .then(response => response.json())

@@ -30,10 +30,10 @@ export class Login extends Component {
             .then(data => {
                 const user = data.find(user => user.name === this.state.name && user.password === this.state.password);
                 if (user) {
-                    // Handle successful login here
+                    // Kode mangler - Håndter et succesfuldt login her
                     this.props.history.push('/menu');
                 } else {
-                    // Handle invalid login here
+                    // Kode mangler - Håndter et forkert login forsøg her
                 }
             })
             .catch(error => {
@@ -53,7 +53,7 @@ export class Login extends Component {
         })
             .then(response => response.json())
             .then(data => {
-                // Handle response from API here
+                // Kode mangler - håndter respons fra API´en her
             })
             .catch(error => {
                 console.error(error);

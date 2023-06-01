@@ -13,6 +13,7 @@ export class Opgave1 extends Component {
         };
     }
 
+    // Henter data fra API´en, og fremviser specifikt kun den første kunde og dens releterede info i API´en
     componentDidMount() {
         fetch('https://www.shiggy.dk/api/Machines')
             .then(response => response.json())
@@ -28,12 +29,13 @@ export class Opgave1 extends Component {
             })
             .catch(error => console.log(error));
     }
-
+    // Håndtere at upload af billede til program
     handleFileUpload = (event) => {
         const files = Array.from(event.target.files);
         this.setState({ files: files });
     }
 
+    // Håndterer afsending af billede fra programmet til API´en
     handleFileSend = () => {
         const formData = new FormData();
         this.state.files.forEach(file => {
